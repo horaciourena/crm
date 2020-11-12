@@ -1,0 +1,18 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Are you sure you want to delete "<strong>{{ item.product }}</strong>" made by <strong>{{ item.customer.name }}</strong>
+with status <strong>{{ item.status }}</strong></p>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    <a class="btn btn-sm btn-success" href="{% url 'home' %}">Cancel</a>
+
+    <input type="submit" name="Confirm" class="btn btn-sm btn-danger">
+
+</form>
+
+{% endblock %}

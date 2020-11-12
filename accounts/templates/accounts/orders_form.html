@@ -2,8 +2,25 @@
 {% load static %}
 {% block content %}
 
-<form action="" method="post">
-    <input type="submit" name="Submit">
-</form>
+<link rel="stylesheet" type="text/css" href="{% static '/css/orders_form.css' %}"> 
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+                <hr>
+                <p>Create Orders for customer: <strong>{{ customer.name }}</strong></p>
+                <input type="submit" name="Submit" id="order_button">
+                <hr>
+                {% csrf_token %}
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    {{form}}
+                    <hr>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
